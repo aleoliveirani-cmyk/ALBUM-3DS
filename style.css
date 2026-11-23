@@ -1,0 +1,118 @@
+:root{
+  --preto:#0c0c0e;
+  --preto2:#17141a;
+  --branco:#f7f3f2;
+  --vinho:#7a1426;      /* vermelho vinho cereja */
+  --vinho-claro:#a52038;
+  --cor-fav:#7a1426;    /* muda pela cor favorita */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--preto);
+  color:var(--branco);
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.6;
+  background-image:radial-gradient(circle at 20% 0%,rgba(122,20,38,.35),transparent 45%),
+                   radial-gradient(circle at 90% 100%,rgba(122,20,38,.25),transparent 40%);
+  background-attachment:fixed;
+}
+header{text-align:center;padding:64px 20px 24px}
+header h1{font-size:clamp(2.2rem,7vw,4rem);letter-spacing:.04em;font-weight:400}
+header h1 span{color:var(--vinho-claro);font-style:italic}
+header p.sub{opacity:.7;letter-spacing:.3em;text-transform:uppercase;font-size:.75rem;margin-top:8px}
+main{max-width:980px;margin:0 auto;padding:20px 20px 100px}
+section{
+  margin:40px 0;padding:32px;border:1px solid rgba(247,243,242,.12);
+  background:linear-gradient(160deg,var(--preto2),var(--preto));
+  border-radius:4px;position:relative;
+}
+section::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--vinho)}
+h2{font-weight:400;font-size:1.6rem;margin-bottom:16px;letter-spacing:.06em}
+h2 em{color:var(--vinho-claro)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+
+/* campos editáveis */
+.edit-on [contenteditable]{
+  outline:1px dashed var(--vinho-claro);outline-offset:3px;cursor:text;
+}
+[contenteditable]:focus{outline:2px solid var(--vinho-claro)!important;background:rgba(165,32,56,.1)}
+
+/* músicas */
+ol.songs{list-style:none;counter-reset:s}
+ol.songs li{
+  counter-increment:s;display:flex;gap:12px;align-items:center;
+  padding:10px 0;border-bottom:1px solid rgba(247,243,242,.1);
+}
+ol.songs li::before{content:counter(s,decimal-leading-zero);color:var(--vinho-claro);font-size:.85rem;min-width:24px}
+ol.songs li span.t{flex:1}
+.x{display:none;background:none;border:none;color:var(--vinho-claro);cursor:pointer;font-size:1.1rem}
+.edit-on .x{display:inline-block}
+.add{
+  display:none;margin-top:12px;background:transparent;color:var(--branco);
+  border:1px solid var(--vinho-claro);padding:6px 14px;cursor:pointer;font-family:inherit;
+}
+.edit-on .add{display:inline-block}
+.add:hover{background:var(--vinho)}
+
+/* cor favorita */
+.cor-box{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.swatch{width:90px;height:90px;border-radius:50%;background:var(--cor-fav);border:3px solid var(--branco);box-shadow:0 0 30px var(--cor-fav)}
+#corPicker{display:none}
+.edit-on #corPicker{display:inline-block;width:60px;height:36px;border:none;background:none;cursor:pointer}
+.cor-nome{font-size:1.4rem;font-style:italic}
+
+/* hobbies */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  padding:6px 16px;border-radius:999px;border:1px solid var(--vinho-claro);
+  background:rgba(122,20,38,.25);display:flex;gap:8px;align-items:center;
+}
+
+/* polaroids */
+.polas{display:flex;flex-wrap:wrap;gap:36px;justify-content:center;padding:10px 0}
+.pola{
+  width:230px;background:var(--branco);color:var(--preto);padding:14px 14px 18px;
+  box-shadow:0 12px 28px rgba(0,0,0,.6);transition:transform .25s;
+}
+.pola:nth-child(odd){transform:rotate(-3deg)}
+.pola:nth-child(even){transform:rotate(2.5deg)}
+.pola:nth-child(3n){transform:rotate(-1deg)}
+.pola:hover{transform:rotate(0) scale(1.04);z-index:2}
+.pola .foto{
+  width:100%;aspect-ratio:1/1;background:#1b1b1f;display:flex;align-items:center;justify-content:center;
+  color:#999;font-family:sans-serif;font-size:.8rem;text-align:center;cursor:pointer;overflow:hidden;
+  border:1px solid #ccc;
+}
+.pola .foto img{width:100%;height:100%;object-fit:cover;display:block}
+.pola .legenda{
+  margin-top:12px;text-align:center;font-family:"Segoe Print","Bradley Hand",cursive;
+  font-size:1rem;min-height:1.6em;color:var(--vinho);
+}
+.pola .rm{display:none;margin:6px auto 0;background:none;border:none;color:var(--vinho);cursor:pointer;font-size:.75rem;text-decoration:underline}
+.edit-on .pola .rm{display:block}
+
+/* QR */
+.qr-wrap{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+#qrcode{background:var(--branco);padding:14px;display:inline-block;border:4px solid var(--vinho)}
+#qrcode img,#qrcode canvas{display:block}
+.qr-input{display:none;flex-direction:column;gap:8px}
+.edit-on .qr-input{display:flex}
+.qr-input input{
+  background:var(--preto);color:var(--branco);border:1px solid var(--vinho-claro);
+  padding:8px 12px;min-width:260px;font-family:inherit;
+}
+.qr-input label{font-size:.8rem;opacity:.7}
+
+/* barra de edição */
+.bar{
+  position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:10;flex-wrap:wrap;justify-content:flex-end
+}
+.bar button{
+  background:var(--vinho);color:var(--branco);border:1px solid var(--branco);
+  padding:10px 18px;cursor:pointer;font-family:inherit;font-size:.9rem;
+  box-shadow:0 6px 18px rgba(0,0,0,.5);
+}
+.bar button:hover{background:var(--vinho-claro)}
+.bar button.sec{background:var(--preto);}
+footer{text-align:center;opacity:.5;font-size:.8rem;padding-bottom:90px}

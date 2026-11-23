@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meu Álbum</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1 data-key="titulo" class="ed">Meu <span>Álbum</span></h1>
+  <p class="sub ed" data-key="subtitulo">um pouco sobre mim</p>
+</header>
+
+<main>
+
+  <!-- SOBRE MIM -->
+  <section>
+    <h2>Sobre <em>mim</em></h2>
+    <p class="ed" data-key="sobre" style="font-size:1.1rem">
+      Oi! Eu sou [seu nome]. Clique em "Editar" no canto da tela e escreva aqui um pouco sobre você:
+      de onde você é, o que gosta, o que te define.
+    </p>
+  </section>
+
+  <div class="grid2">
+    <!-- MÚSICAS -->
+    <section style="margin:0">
+      <h2>Músicas <em>favoritas</em></h2>
+      <ol class="songs" id="songs"></ol>
+      <button class="add" id="addSong">+ adicionar música</button>
+    </section>
+
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <!-- COR -->
+      <section style="margin:0">
+        <h2>Cor <em>favorita</em></h2>
+        <div class="cor-box">
+          <div class="swatch" id="swatch"></div>
+          <div>
+            <div class="cor-nome ed" data-key="corNome">Vermelho vinho cereja</div>
+            <input type="color" id="corPicker" value="#7a1426" title="Escolher cor">
+          </div>
+        </div>
+      </section>
+
+      <!-- HOBBIES -->
+      <section style="margin:0">
+        <h2>Hobbies <em>favoritos</em></h2>
+        <div class="chips" id="hobbies"></div>
+        <button class="add" id="addHobby">+ adicionar hobby</button>
+      </section>
+    </div>
+  </div>
+
+  <!-- POLAROIDS -->
+  <section>
+    <h2>Minhas <em>polaroids</em></h2>
+    <div class="polas" id="polas"></div>
+    <button class="add" id="addPola">+ adicionar polaroid</button>
+  </section>
+
+  <!-- QR -->
+  <section>
+    <h2>QR <em>Code</em></h2>
+    <div class="qr-wrap">
+      <div id="qrcode"></div>
+      <div class="qr-input">
+        <label>Link ou texto do QR Code:</label>
+        <input type="text" id="qrInput" placeholder="https://...">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>com carinho, Alê</footer>
+
+<div class="bar">
+  <button id="btnEdit">✎ Editar</button>
+  <button class="sec" id="btnReset" title="Apagar tudo e voltar ao padrão">Resetar</button>
+</div>
+
+<!-- Biblioteca de QR Code (precisa de internet na 1ª vez que abrir) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
